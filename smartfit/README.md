@@ -1,8 +1,8 @@
 # SmartFit – AI Enabled Gym Management and Fitness Recommendation System
 
-SmartFit is a Django-based gym management and fitness recommendation system designed to help manage gym operations and provide personalized fitness and diet recommendations.
+SmartFit is a Django-based gym management and fitness recommendation system designed to manage gym operations and provide personalized fitness, workout, meal, and diet recommendations.
 
-## Features
+## 🚀 Features
 
 - User Registration and Login
 - Membership Management
@@ -11,51 +11,54 @@ SmartFit is a Django-based gym management and fitness recommendation system desi
 - Workout Programs
 - Feedback Management
 - Personalized Meal and Diet Recommendations
-- AI-based fitness recommendations
+- AI-based Fitness Recommendations
+- Fitness Goal Planner
+- Personalized Workout Recommendations
+- Macronutrient Recommendations
 
-## Technologies Used
+## 🛠️ Technologies Used
 
 - Python
 - Django
-- HTML
-- CSS
+- HTML5
+- CSS3
 - Bootstrap
 - SQLite
 - Django ORM
 - Cohere API
 
-## Project Modules
+## 📦 Project Modules
 
 - User Management
 - Membership Management
 - Trainer Management
 - Payment Management
 - Workout Management
+- Payment Management
 - Feedback Management
 - AI Recommendation System
 
-## How to Run
+## 🤖 AI Recommendation System
 
-1. Clone the repository.
-2. Create and activate a virtual environment.
-3. Install the required packages:
+SmartFit integrates the Cohere API to generate personalized fitness recommendations based on user-provided information and fitness goals.
 
-   `pip install -r requirements.txt`
+The AI Fitness Planner can provide:
 
-4. Run database migrations:
+- Goal analysis
+- Weekly workout plan
+- Nutrition plan
+- Protein, carbohydrate, and fat recommendations
+- Important fitness tips
 
-   `python manage.py migrate`
+## 📁 Project Structure
 
-5. Start the development server:
-
-   `python manage.py runserver`
-
-6. Open `http://127.0.0.1:8000/` in your browser.
-
-## Project Status
-
-Completed academic project.
-
-## Author
-
-Jayant Mishra
+```text
+SmartFit/
+│
+├── media/
+├── smartfit/
+├── smartfit_app/
+├── manage.py
+├── requirements.txt
+├── README.md
+└── .gitignore
