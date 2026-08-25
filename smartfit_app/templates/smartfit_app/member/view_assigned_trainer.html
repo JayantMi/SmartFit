@@ -1,0 +1,230 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Assigned Trainer - SmartFit</title>
+
+{% include 'smartfit_app/common_html/common_css.html' %}
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family:'Poppins',sans-serif;
+    background:#0b1220;
+    color:white;
+}
+
+.main{
+    min-height:100vh;
+    padding:70px 20px;
+    background:
+    linear-gradient(rgba(11,18,32,.84),rgba(11,18,32,.92)),
+    url("https://images.unsplash.com/photo-1571019613914-85f342c55f55") no-repeat center center/cover;
+    background-size:cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.box{
+    width:100%;
+    max-width:760px;
+    padding:42px;
+    border-radius:28px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(0,194,255,0.14);
+    backdrop-filter:blur(12px);
+    box-shadow:0 20px 45px rgba(0,0,0,.35);
+}
+
+.page-title{
+    text-align:center;
+    color:#00c2ff;
+    font-size:38px;
+    font-weight:700;
+    margin-bottom:28px;
+}
+
+.trainer-card{
+    padding:28px;
+    border-radius:22px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.06);
+    margin-bottom:22px;
+}
+
+.trainer-name{
+    font-size:28px;
+    font-weight:700;
+    color:white;
+    margin-bottom:16px;
+}
+
+.info-row{
+    padding:12px 14px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.03);
+    margin-bottom:10px;
+    color:#dbe5f1;
+    font-size:15px;
+}
+
+.info-row strong{
+    color:#ffffff;
+}
+
+.alert{
+    border-radius:14px;
+    border:none;
+}
+
+.button-group{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:24px;
+}
+
+.btn-custom{
+    padding:14px;
+    border:none;
+    border-radius:14px;
+    text-decoration:none;
+    text-align:center;
+    font-weight:600;
+    color:white;
+    transition:.3s;
+}
+
+.btn-primary-custom{
+    background:linear-gradient(135deg,#00c2ff,#3b82f6);
+}
+
+.btn-secondary-custom{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.btn-custom:hover{
+    transform:translateY(-2px);
+    color:white;
+}
+
+.note-box{
+    margin-top:24px;
+    padding:18px;
+    border-radius:18px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.05);
+}
+
+.note-box h5{
+    color:#00c2ff;
+    margin-bottom:10px;
+}
+
+.note-box p{
+    color:#cbd5e1;
+    font-size:14px;
+    margin:0;
+}
+
+@media(max-width:768px){
+    .box{
+        padding:28px 20px;
+    }
+
+    .page-title{
+        font-size:30px;
+    }
+
+    .button-group{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+{% include 'smartfit_app/member/member_header.html' %}
+
+<div class="main">
+
+<div class="box">
+
+<h2 class="page-title">Your Assigned Trainer</h2>
+
+{% if assigned_trainer %}
+
+<div class="trainer-card">
+
+<div class="trainer-name">
+{{ assigned_trainer.name }}
+</div>
+
+<div class="info-row">
+<strong>Email:</strong> {{ assigned_trainer.email }}
+</div>
+
+<div class="info-row">
+<strong>Phone:</strong> {{ assigned_trainer.phone }}
+</div>
+
+<div class="info-row">
+<strong>City:</strong> {{ assigned_trainer.city }}
+</div>
+
+</div>
+
+<div class="alert alert-info">
+Admin has assigned this trainer to support your workouts, progress tracking, and fitness guidance.
+</div>
+
+{% else %}
+
+<div class="alert alert-warning">
+
+No trainer has been assigned yet.
+
+{% if member.trainer_request %}
+Your request is still pending.
+{% else %}
+Please submit a trainer request first.
+{% endif %}
+
+</div>
+
+{% endif %}
+
+<div class="button-group">
+<a href="/request_personal_trainer/" class="btn-custom btn-primary-custom">
+Request Trainer
+</a>
+
+<a href="/member_home/" class="btn-custom btn-secondary-custom">
+Back to Profile
+</a>
+</div>
+
+<div class="note-box">
+<h5>Trainer Support</h5>
+<p>
+Your trainer can help with workout planning, exercise form correction,
+diet suggestions, motivation, and faster progress.
+</p>
+</div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

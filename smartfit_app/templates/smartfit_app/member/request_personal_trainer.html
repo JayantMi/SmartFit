@@ -1,0 +1,233 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Personal Trainer - SmartFit</title>
+
+{% include 'smartfit_app/common_html/common_css.html' %}
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family:'Poppins',sans-serif;
+    background:#0b1220;
+    color:white;
+}
+
+.main{
+    min-height:100vh;
+    padding:70px 20px;
+    background:
+    linear-gradient(rgba(11,18,32,.84),rgba(11,18,32,.92)),
+    url("https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b") no-repeat center center/cover;
+    background-size:cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.box{
+    width:100%;
+    max-width:760px;
+    padding:42px;
+    border-radius:28px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(0,194,255,0.14);
+    backdrop-filter:blur(12px);
+    box-shadow:0 20px 45px rgba(0,0,0,.35);
+}
+
+.page-title{
+    text-align:center;
+    color:#00c2ff;
+    font-size:38px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.sub-text{
+    text-align:center;
+    color:#cbd5e1;
+    font-size:15px;
+    margin-bottom:28px;
+}
+
+.alert{
+    border-radius:14px;
+    border:none;
+}
+
+.form-label{
+    color:#e2e8f0;
+    font-size:14px;
+    font-weight:500;
+    margin-bottom:8px;
+}
+
+textarea{
+    width:100%;
+    padding:16px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,0.08);
+    background:rgba(255,255,255,0.03);
+    color:white;
+    font-size:15px;
+    resize:none;
+    min-height:140px;
+    outline:none;
+    transition:.3s;
+}
+
+textarea:focus{
+    border-color:#00c2ff;
+    box-shadow:0 0 0 4px rgba(0,194,255,.08);
+}
+
+textarea::placeholder{
+    color:#94a3b8;
+}
+
+.btn-request{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    margin-top:22px;
+    background:linear-gradient(135deg,#00c2ff,#3b82f6);
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-request:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 28px rgba(59,130,246,.25);
+}
+
+.btn-request:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.btn-view{
+    text-decoration:none;
+    padding:8px 14px;
+    border-radius:10px;
+    background:#3b82f6;
+    color:white;
+    font-size:13px;
+    margin-left:10px;
+}
+
+.info-box{
+    margin-top:28px;
+    padding:20px;
+    border-radius:18px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.06);
+}
+
+.info-box h5{
+    color:#00c2ff;
+    margin-bottom:12px;
+}
+
+.info-box ul{
+    margin:0;
+    padding-left:18px;
+}
+
+.info-box li{
+    color:#cbd5e1;
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+@media(max-width:768px){
+    .box{
+        padding:28px 20px;
+    }
+
+    .page-title{
+        font-size:30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+{% include 'smartfit_app/member/member_header.html' %}
+
+<div class="main">
+
+<div class="box">
+
+<h2 class="page-title">Request a Personal Trainer</h2>
+
+<p class="sub-text">
+Submit your request and SmartFit admin will assign a qualified trainer based on your goals and availability.
+</p>
+
+{% if member.assigned_trainer %}
+<div class="alert alert-success">
+You already have a trainer assigned:
+<strong>{{ member.assigned_trainer.name }}</strong>
+
+<a href="/view_assigned_trainer/" class="btn-view">
+View Trainer
+</a>
+</div>
+
+{% elif member.trainer_request %}
+<div class="alert alert-warning">
+Your trainer request is pending. Admin will assign a trainer soon.
+</div>
+{% endif %}
+
+<form method="post" action="/request_personal_trainer/">
+{% csrf_token %}
+
+<div class="mb-3">
+<label for="why_request" class="form-label">
+Why do you want a personal trainer?
+</label>
+
+<textarea id="why_request" rows="5">
+Personal trainer requests are submitted automatically when you click below. A trainer will be assigned by admin based on your goals and availability.
+</textarea>
+</div>
+
+<button type="submit" class="btn-request"
+{% if member.assigned_trainer or member.trainer_request %}disabled{% endif %}>
+Request Personal Trainer
+</button>
+
+</form>
+
+<div class="info-box">
+<h5>Benefits of Personal Trainer</h5>
+<ul>
+<li>Custom workout routines for your goals.</li>
+<li>Proper exercise form and injury prevention.</li>
+<li>Motivation and progress tracking.</li>
+<li>Diet and lifestyle guidance.</li>
+<li>Faster and smarter results.</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

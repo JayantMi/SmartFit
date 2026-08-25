@@ -1,0 +1,182 @@
+<!-- SmartFit Premium Navbar -->
+<nav class="navbar navbar-expand-lg smartfit-navbar">
+  <div class="container-fluid px-lg-4">
+
+    <!-- Logo -->
+    <a class="navbar-brand smartfit-logo" href="/">SmartFit</a>
+
+    <!-- Mobile Toggle -->
+    <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+
+      <ul class="navbar-nav align-items-lg-center gap-lg-2">
+
+        <li class="nav-item">
+          <a class="nav-link custom-link active" href="/">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link custom-link" href="/contact/">Contact Us</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link custom-link" href="/about/">About Us</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link custom-link" href="/view_workout/">Workout Program</a>
+        </li>
+
+        <!-- Registration -->
+        <li class="nav-item dropdown">
+          <a class="nav-link custom-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            Registration
+          </a>
+
+          <ul class="dropdown-menu smart-dropdown">
+            <li>
+              <a class="dropdown-item" href="/registration/">
+                Member Registration
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Login -->
+        <li class="nav-item dropdown">
+          <a class="nav-link custom-link dropdown-toggle login-btn" href="#" role="button" data-bs-toggle="dropdown">
+            Login
+          </a>
+
+          <ul class="dropdown-menu smart-dropdown dropdown-menu-end">
+            <li>
+              <a class="dropdown-item" href="/member_login/">
+                Member Login
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/t_login">
+                Trainer Login
+              </a>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<style>
+/* Navbar Background */
+.smartfit-navbar{
+    background: rgba(11,18,32,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,194,255,0.15);
+    padding: 12px 0;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+}
+
+/* Logo */
+.smartfit-logo{
+    font-size: 28px;
+    font-weight: 700;
+    color: #00c2ff !important;
+    letter-spacing: 0.5px;
+}
+
+/* Links */
+.custom-link{
+    color: #e2e8f0 !important;
+    font-weight: 500;
+    padding: 10px 16px !important;
+    border-radius: 10px;
+    transition: 0.3s ease;
+    position: relative;
+}
+
+/* Hover */
+.custom-link:hover{
+    color: #00c2ff !important;
+    background: rgba(255,255,255,0.03);
+}
+
+/* Active */
+.custom-link.active{
+    color: #00c2ff !important;
+}
+
+/* Login Special Button */
+.login-btn{
+    border: 1px solid #00c2ff;
+    margin-left: 6px;
+}
+
+.login-btn:hover{
+    background: #00c2ff !important;
+    color: #0b1220 !important;
+}
+
+/* Dropdown */
+.smart-dropdown{
+    background: #111827;
+    border: 1px solid rgba(0,194,255,0.18);
+    border-radius: 14px;
+    padding: 8px;
+    min-width: 220px;
+    margin-top: 10px;
+}
+
+.smart-dropdown .dropdown-item{
+    color: #e5e7eb;
+    border-radius: 10px;
+    padding: 10px 14px;
+    transition: 0.25s;
+}
+
+.smart-dropdown .dropdown-item:hover{
+    background: rgba(0,194,255,0.12);
+    color: #00c2ff;
+}
+
+/* Mobile Toggle */
+.custom-toggler{
+    border: 1px solid rgba(0,194,255,0.25);
+    padding: 6px 10px;
+}
+
+.custom-toggler:focus{
+    box-shadow: none;
+}
+
+.navbar-toggler-icon{
+    filter: invert(1);
+}
+
+/* Mobile */
+@media(max-width:991px){
+
+    .navbar-nav{
+        margin-top: 14px;
+        gap: 8px;
+        align-items: stretch !important;
+    }
+
+    .custom-link{
+        padding: 12px 14px !important;
+    }
+
+    .login-btn{
+        margin-left: 0;
+    }
+
+    .smart-dropdown{
+        margin-top: 6px;
+    }
+}
+</style>

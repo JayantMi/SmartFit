@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trainer Dashboard - SmartFit</title>
+
+{% include 'smartfit_app/common_html/common_css.html'%}
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family:'Poppins',sans-serif;
+    background:#0b1220;
+    color:white;
+}
+
+/* Main Background */
+.main{
+    min-height:100vh;
+    padding:70px 20px;
+    background:
+    linear-gradient(rgba(11,18,32,.84),rgba(11,18,32,.92)),
+    url("https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b") no-repeat center center/cover;
+    background-size:cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Card */
+.box{
+    width:100%;
+    max-width:560px;
+    padding:42px;
+    border-radius:28px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(0,194,255,0.14);
+    backdrop-filter:blur(12px);
+    box-shadow:0 20px 45px rgba(0,0,0,.35);
+    text-align:center;
+}
+
+/* Title */
+.page-title{
+    color:#00c2ff;
+    font-size:36px;
+    font-weight:700;
+    margin-bottom:26px;
+}
+
+/* Profile Image */
+.profile-img{
+    width:130px;
+    height:130px;
+    object-fit:cover;
+    border-radius:50%;
+    border:4px solid rgba(0,194,255,.35);
+    margin-bottom:24px;
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+/* Name */
+.trainer-name{
+    font-size:30px;
+    font-weight:700;
+    color:white;
+    margin-bottom:20px;
+}
+
+/* Info Rows */
+.info-row{
+    padding:14px 18px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.03);
+    margin-bottom:12px;
+    text-align:left;
+    color:#dbe5f1;
+    font-size:15px;
+}
+
+.info-row strong{
+    color:white;
+}
+
+/* Stat Box */
+.stat-box{
+    margin-top:24px;
+    padding:22px;
+    border-radius:20px;
+    background:linear-gradient(135deg,#00c2ff,#3b82f6);
+    color:white;
+}
+
+.stat-box h3{
+    margin:0;
+    font-size:34px;
+    font-weight:700;
+}
+
+.stat-box p{
+    margin:6px 0 0;
+    font-size:14px;
+}
+
+/* Footer Note */
+.note-box{
+    margin-top:22px;
+    padding:16px;
+    border-radius:16px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.05);
+    color:#cbd5e1;
+    font-size:13px;
+}
+
+/* Responsive */
+@media(max-width:576px){
+    .box{
+        padding:28px 20px;
+    }
+
+    .page-title{
+        font-size:30px;
+    }
+
+    .trainer-name{
+        font-size:24px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+{% include 'smartfit_app/trainer/trainer_header.html'%}
+
+<div class="main">
+
+<div class="box">
+
+<h1 class="page-title">Trainer Dashboard</h1>
+
+<img src="{{ trainer.profile_pic.url }}" class="profile-img" alt="Trainer Image">
+
+<div class="trainer-name">
+{{ trainer.name }}
+</div>
+
+<div class="info-row">
+<strong>Email:</strong> {{ trainer.email }}
+</div>
+
+<div class="info-row">
+<strong>Phone:</strong> {{ trainer.phone }}
+</div>
+
+<div class="info-row">
+<strong>City:</strong> {{ trainer.city }}
+</div>
+
+<div class="stat-box">
+<h3>{{ member_count }}</h3>
+<p>Assigned Members</p>
+</div>
+
+<div class="note-box">
+Manage your members, track progress, and guide them toward better fitness results.
+</div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

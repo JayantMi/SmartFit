@@ -1,0 +1,201 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartFit AI Result</title>
+
+{% include 'smartfit_app/common_html/common_css.html'%}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family:'Poppins',sans-serif;
+    background:#0b1220;
+}
+
+.response-container{
+    min-height:100vh;
+    padding:40px 20px;
+    background:
+    linear-gradient(rgba(11,18,32,.88),rgba(11,18,32,.94)),
+    url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438") no-repeat center center/cover;
+}
+
+.response-header{
+    max-width:1100px;
+    margin:auto;
+    margin-bottom:30px;
+    padding:35px;
+    border-radius:24px;
+    text-align:center;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(0,194,255,.14);
+    backdrop-filter:blur(12px);
+}
+
+.response-header h1{
+    font-size:42px;
+    color:#00c2ff;
+    margin-bottom:10px;
+    font-weight:700;
+}
+
+.response-header p{
+    color:#cbd5e1;
+    margin:0;
+    font-size:16px;
+}
+
+.response-content{
+    max-width:1100px;
+    margin:auto;
+    padding:40px;
+    border-radius:24px;
+    background:white;
+    box-shadow:0 20px 40px rgba(0,0,0,.28);
+    line-height:1.8;
+}
+
+.response-content h1,
+.response-content h2,
+.response-content h3{
+    color:#2563eb;
+    margin-top:20px;
+}
+
+.response-content table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+    margin-bottom:15px;
+}
+
+.response-content table th{
+    background:#2563eb;
+    color:white;
+    padding:12px;
+}
+
+.response-content table td{
+    padding:10px;
+    border:1px solid #e5e7eb;
+}
+
+.response-content ul li,
+.response-content ol li{
+    margin-bottom:8px;
+}
+
+.action-buttons{
+    max-width:1100px;
+    margin:25px auto 0;
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.btn-custom{
+    padding:14px 28px;
+    border:none;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-primary-custom{
+    background:linear-gradient(135deg,#00c2ff,#3b82f6);
+    color:white;
+}
+
+.btn-secondary-custom{
+    background:white;
+    color:#2563eb;
+}
+
+.btn-custom:hover{
+    transform:translateY(-2px);
+}
+
+.info-box{
+    background:#eff6ff;
+    padding:18px;
+    border-left:4px solid #2563eb;
+    border-radius:10px;
+    margin:18px 0;
+}
+
+.success-box{
+    background:#f0fdf4;
+    padding:18px;
+    border-left:4px solid #22c55e;
+    border-radius:10px;
+    margin:18px 0;
+}
+
+@media(max-width:768px){
+    .response-header h1{
+        font-size:30px;
+    }
+
+    .response-content{
+        padding:25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+{% include 'smartfit_app/member/member_header.html' %}
+
+<div class="response-container">
+
+<div class="response-header">
+<h1>
+<i class="fas fa-dumbbell"></i>
+{{ page_title|default:"Your SmartFit Result" }}
+</h1>
+
+<p>
+{{ page_subtitle|default:"Your personalized AI fitness result is ready." }}
+</p>
+</div>
+
+<div class="response-content">
+{{ answer|safe }}
+</div>
+
+<div class="action-buttons">
+
+<button onclick="window.print()" class="btn-custom btn-secondary-custom">
+<i class="fas fa-print"></i> Print
+</button>
+
+{% if back_url %}
+<a href="{{ back_url }}" class="btn-custom btn-primary-custom">
+<i class="fas fa-redo"></i> Generate Again
+</a>
+{% else %}
+<a href="{% url 'fitness_goal_planner' %}" class="btn-custom btn-primary-custom">
+<i class="fas fa-redo"></i> Generate Again
+</a>
+{% endif %}
+
+<a href="{% url 'member_home' %}" class="btn-custom btn-secondary-custom">
+<i class="fas fa-home"></i> Home
+</a>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

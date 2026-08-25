@@ -1,0 +1,235 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About SmartFit</title>
+
+    {% include 'smartfit_app/common_html/common_css.html'%}
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family:'Poppins',sans-serif;
+    background:#0b1220;
+    color:white;
+}
+
+/* Main Background */
+.main{
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(11,18,32,.84),rgba(11,18,32,.90)),
+    url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48") no-repeat center center/cover;
+    padding:70px 20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Card Box */
+.box{
+    width:100%;
+    max-width:1100px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(0,194,255,0.14);
+    border-radius:24px;
+    backdrop-filter:blur(10px);
+    padding:55px;
+    box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+
+/* Layout */
+.hero-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:45px;
+    align-items:center;
+}
+
+/* Left Content */
+.tag{
+    display:inline-block;
+    padding:8px 16px;
+    border-radius:30px;
+    background:rgba(0,194,255,.10);
+    color:#00c2ff;
+    font-size:14px;
+    font-weight:600;
+    margin-bottom:18px;
+}
+
+.heading{
+    font-size:48px;
+    font-weight:700;
+    line-height:1.15;
+    margin-bottom:18px;
+}
+
+.heading span{
+    color:#00c2ff;
+}
+
+.desc{
+    color:#cbd5e1;
+    font-size:16px;
+    line-height:1.8;
+    margin-bottom:18px;
+}
+
+/* Stats */
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-top:30px;
+}
+
+.stat-box{
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.06);
+    border-radius:18px;
+    padding:22px;
+    text-align:center;
+}
+
+.stat-box h3{
+    margin:0;
+    color:#00c2ff;
+    font-size:28px;
+    font-weight:700;
+}
+
+.stat-box p{
+    margin:8px 0 0;
+    color:#dbe5f1;
+    font-size:14px;
+}
+
+/* Right Section */
+.right-box{
+    background:linear-gradient(145deg,#0f172a,#111827);
+    border-radius:24px;
+    padding:35px;
+    border:1px solid rgba(0,194,255,0.12);
+}
+
+.right-box h4{
+    font-size:26px;
+    margin-bottom:18px;
+    color:#00c2ff;
+}
+
+.feature{
+    padding:14px 16px;
+    background:rgba(255,255,255,0.03);
+    border-radius:14px;
+    margin-bottom:14px;
+    color:#e2e8f0;
+    border-left:4px solid #00c2ff;
+}
+
+/* Responsive */
+@media(max-width:991px){
+    .hero-container{
+        grid-template-columns:1fr;
+    }
+
+    .heading{
+        font-size:36px;
+    }
+
+    .box{
+        padding:30px;
+    }
+}
+
+@media(max-width:576px){
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .heading{
+        font-size:30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+{% include 'smartfit_app/common_html/navbar.html'%}
+
+<div class="main">
+    <div class="box">
+
+        <div class="hero-container">
+
+            <!-- Left -->
+            <div>
+                <span class="tag">About SmartFit</span>
+
+                <h1 class="heading">
+                    Build Strength. <span>Live Better.</span>
+                </h1>
+
+                <p class="desc">
+                    SmartFit is a modern gym and fitness platform designed to make your fitness journey simple, smart, and result-driven. We combine professional training methods with AI-powered recommendations to help members reach their goals faster.
+                </p>
+
+                <p class="desc">
+                    Whether your goal is fat loss, muscle gain, better stamina, or a healthier lifestyle, SmartFit provides structured workout programs, personalized nutrition guidance, and expert trainer support in one place.
+                </p>
+
+                <div class="stats">
+
+                    <div class="stat-box">
+                        <h3>500+</h3>
+                        <p>Active Members</p>
+                    </div>
+
+                    <div class="stat-box">
+                        <h3>20+</h3>
+                        <p>Programs</p>
+                    </div>
+
+                    <div class="stat-box">
+                        <h3>24/7</h3>
+                        <p>Support</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Right -->
+            <div class="right-box">
+
+                <h4>Why Choose SmartFit?</h4>
+
+                <div class="feature">AI-based workout and meal planning</div>
+
+                <div class="feature">Certified trainers and guided programs</div>
+
+                <div class="feature">Membership management with easy access</div>
+
+                <div class="feature">Modern environment with latest equipment</div>
+
+                <div class="feature">Track progress and stay motivated</div>
+
+                <div class="feature">Fitness solutions for beginners to advanced users</div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

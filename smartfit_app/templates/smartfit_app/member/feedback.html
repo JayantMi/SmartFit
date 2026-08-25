@@ -1,0 +1,225 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback</title>
+
+{% include 'smartfit_app/common_html/common_css.html'%}
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family:'Poppins',sans-serif;
+    background:#0b1220;
+}
+
+/* Main Section */
+.main{
+    min-height:100vh;
+    padding:60px 20px;
+    background:
+    linear-gradient(rgba(11,18,32,.84),rgba(11,18,32,.92)),
+    url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438") no-repeat center center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Card */
+.box{
+    width:100%;
+    max-width:560px;
+    padding:40px;
+    border-radius:24px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(0,194,255,0.14);
+    backdrop-filter:blur(12px);
+    box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+
+/* Title */
+.page-title{
+    text-align:center;
+    color:#00c2ff;
+    font-size:36px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.sub-text{
+    text-align:center;
+    color:#cbd5e1;
+    font-size:14px;
+    margin-bottom:28px;
+}
+
+/* Label */
+label{
+    display:block;
+    color:#e2e8f0;
+    font-size:14px;
+    font-weight:500;
+    margin-bottom:10px;
+}
+
+/* Rating */
+.rating{
+    direction:rtl;
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin-bottom:24px;
+}
+
+.rating input{
+    display:none;
+}
+
+.rating label{
+    font-size:38px;
+    color:#475569;
+    cursor:pointer;
+    transition:.25s;
+    margin:0;
+}
+
+.rating label:hover,
+.rating label:hover ~ label,
+.rating input:checked ~ label{
+    color:#fbbf24;
+    transform:scale(1.08);
+}
+
+/* Textarea */
+textarea{
+    width:100%;
+    padding:14px 16px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,0.08);
+    background:rgba(255,255,255,0.03);
+    color:white;
+    font-size:15px;
+    outline:none;
+    resize:none;
+    transition:.3s;
+}
+
+textarea::placeholder{
+    color:#94a3b8;
+}
+
+textarea:focus{
+    border-color:#00c2ff;
+    box-shadow:0 0 0 4px rgba(0,194,255,.08);
+}
+
+/* Button */
+.btn-submit{
+    width:100%;
+    border:none;
+    padding:14px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#00c2ff,#3b82f6);
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    margin-top:20px;
+    transition:.3s;
+}
+
+.btn-submit:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 28px rgba(59,130,246,.25);
+}
+
+/* Alert */
+.alert{
+    border-radius:14px;
+}
+
+/* Responsive */
+@media(max-width:576px){
+    .box{
+        padding:28px 20px;
+    }
+
+    .page-title{
+        font-size:30px;
+    }
+
+    .rating label{
+        font-size:34px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+{% include 'smartfit_app/member/member_header.html'%}
+
+{% if messages %}
+{% for msg in messages %}
+<div class="alert alert-danger alert-dismissible fade show w-50 mx-auto text-center mt-4" role="alert">
+<strong>{{ msg }}</strong>
+<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="main">
+
+<div class="box">
+
+<h1 class="page-title">Feedback</h1>
+<p class="sub-text">Your feedback helps us improve your SmartFit experience.</p>
+
+<form method="post" action="/feedback/" enctype="multipart/form-data">
+{% csrf_token %}
+
+<!-- Rating -->
+<label>Rate Us</label>
+
+<div class="rating">
+
+<input type="radio" id="star5" name="rating" value="5">
+<label for="star5">&#9733;</label>
+
+<input type="radio" id="star4" name="rating" value="4">
+<label for="star4">&#9733;</label>
+
+<input type="radio" id="star3" name="rating" value="3">
+<label for="star3">&#9733;</label>
+
+<input type="radio" id="star2" name="rating" value="2">
+<label for="star2">&#9733;</label>
+
+<input type="radio" id="star1" name="rating" value="1">
+<label for="star1">&#9733;</label>
+
+</div>
+
+<!-- Message -->
+<label>Your Feedback</label>
+
+<textarea rows="5" placeholder="Write your feedback here..." required name="message"></textarea>
+
+<button type="submit" class="btn-submit">
+Submit Feedback
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
