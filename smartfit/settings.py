@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-=jk#$l69cri9(fmk#diioyp^l^gpme)v)_m-2!)km&1-voq&5v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    "smartfit-ppik.onrender.com",
+]
 
 
 # Application definition
