@@ -291,14 +291,23 @@ def view_purchase_plan(request):
         email=request.session["member_email"]
     )
 
-    payment = Payment.objects.get(member=member)
+    payment = Payment.objects.filter(member=member).first()
+
+    if not payment:
+        return render(
+            request,
+            "smartfit_app/member/view_purchase_plan.html",
+            {
+                "payments": None,
+                "message": "You have not purchased any plan yet."
+            }
+        )
 
     return render(
         request,
         "smartfit_app/member/view_purchase_plan.html",
         {"payments": payment}
     )
-
 
 
 @never_cache

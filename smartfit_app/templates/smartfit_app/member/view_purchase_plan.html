@@ -185,44 +185,64 @@ body{
 
 <div class="plan-card">
 
-    <span class="badge-plan">Active Membership</span>
+    {% if payments %}
 
-    <div class="plan-title">
-        {{ payments.plan.plan_name }}
-    </div>
+        <span class="badge-plan">Active Membership</span>
 
-    <div class="info-row">
-        <strong>Duration:</strong>
-        {{ payments.plan.duration }} Months
-    </div>
+        <div class="plan-title">
+            {{ payments.plan.plan_name }}
+        </div>
 
-    <div class="info-row">
-        <strong>Price:</strong>
-        ₹{{ payments.plan.price }}
-    </div>
+        <div class="info-row">
+            <strong>Duration:</strong>
+            {{ payments.plan.duration }} Months
+        </div>
 
-    <div class="info-row">
-        <strong>Gym Access:</strong>
-        Full Access
-    </div>
+        <div class="info-row">
+            <strong>Price:</strong>
+            ₹{{ payments.plan.price }}
+        </div>
 
-    <div class="info-row">
-        <strong>Payment Status:</strong>
+        <div class="info-row">
+            <strong>Gym Access:</strong>
+            Full Access
+        </div>
 
-        {% if payments.status == "Success" %}
-        <span class="status-success">{{ payments.status }}</span>
+        <div class="info-row">
+            <strong>Payment Status:</strong>
 
-        {% elif payments.status == "Pending" %}
-        <span class="status-pending">{{ payments.status }}</span>
+            {% if payments.status == "Success" %}
+            <span class="status-success">{{ payments.status }}</span>
 
-        {% else %}
-        <span class="status-failed">{{ payments.status }}</span>
-        {% endif %}
-    </div>
+            {% elif payments.status == "Pending" %}
+            <span class="status-pending">{{ payments.status }}</span>
 
-    <a href="/member_home/" class="btn-home">
-        Back to Dashboard
-    </a>
+            {% else %}
+            <span class="status-failed">{{ payments.status }}</span>
+            {% endif %}
+        </div>
+
+        <a href="/member_home/" class="btn-home">
+            Back to Dashboard
+        </a>
+
+    {% else %}
+
+        <span class="badge-plan">No Active Membership</span>
+
+        <div class="plan-title">
+            No Plan Purchased
+        </div>
+
+        <div class="info-row">
+            You have not purchased any membership plan yet.
+        </div>
+
+        <a href="/member_home/" class="btn-home">
+            Back to Dashboard
+        </a>
+
+    {% endif %}
 
 </div>
 
