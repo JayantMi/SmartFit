@@ -1,6 +1,10 @@
-# SmartFit – AI Enabled Gym Management and Fitness Recommendation System
+# SmartFit – AI-Enabled Gym Management and Fitness Recommendation System
 
 SmartFit is a Django-based gym management and fitness recommendation system designed to manage gym operations and provide personalized fitness, workout, meal, and diet recommendations.
+
+## 🌐 Live Demo
+
+[Visit SmartFit Live Demo](https://smartfit-ppik.onrender.com/)
 
 ## 🚀 Features
 
@@ -22,6 +26,7 @@ SmartFit is a Django-based gym management and fitness recommendation system desi
 - Django
 - HTML5
 - CSS3
+- JavaScript
 - Bootstrap
 - SQLite
 - Django ORM
@@ -34,7 +39,6 @@ SmartFit is a Django-based gym management and fitness recommendation system desi
 - Trainer Management
 - Payment Management
 - Workout Management
-- Payment Management
 - Feedback Management
 - AI Recommendation System
 
