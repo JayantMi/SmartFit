@@ -86,6 +86,7 @@ def t_edit_profile(request):
         trainer_obj.profile_pic=profile_pic
         trainer_obj.save()
         return redirect("trainer_edit_profile")
+    
         
 
     
